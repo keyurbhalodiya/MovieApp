@@ -13,6 +13,8 @@
 		DF71A48C293C55A000B16868 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48B293C55A000B16868 /* FeedViewController.swift */; };
 		DF71A48E293C55A900B16868 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48D293C55A900B16868 /* SearchViewController.swift */; };
 		DF71A490293C55B200B16868 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48F293C55B200B16868 /* FavoritesViewController.swift */; };
+		DF71A492293C5D4800B16868 /* MovieFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A491293C5D4800B16868 /* MovieFeed.swift */; };
+		DF71A494293C5DD000B16868 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A493293C5DD000B16868 /* MovieDetails.swift */; };
 		DFD618F8293C432C00122409 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD618F7293C432C00122409 /* AppDelegate.swift */; };
 		DFD618FA293C432C00122409 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD618F9293C432C00122409 /* SceneDelegate.swift */; };
 		DFD61901293C432D00122409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD61900293C432D00122409 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 		DF71A48B293C55A000B16868 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		DF71A48D293C55A900B16868 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DF71A48F293C55B200B16868 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		DF71A491293C5D4800B16868 /* MovieFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeed.swift; sourceTree = "<group>"; };
+		DF71A493293C5DD000B16868 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		DFD618F4293C432C00122409 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD618F7293C432C00122409 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFD618F9293C432C00122409 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 		DF71A47F293C498600B16868 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DF71A491293C5D4800B16868 /* MovieFeed.swift */,
+				DF71A493293C5DD000B16868 /* MovieDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,9 +291,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFD618F8293C432C00122409 /* AppDelegate.swift in Sources */,
+				DF71A494293C5DD000B16868 /* MovieDetails.swift in Sources */,
 				DF71A48C293C55A000B16868 /* FeedViewController.swift in Sources */,
 				DF71A48E293C55A900B16868 /* SearchViewController.swift in Sources */,
 				DF71A490293C55B200B16868 /* FavoritesViewController.swift in Sources */,
+				DF71A492293C5D4800B16868 /* MovieFeed.swift in Sources */,
 				DFD618FA293C432C00122409 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
