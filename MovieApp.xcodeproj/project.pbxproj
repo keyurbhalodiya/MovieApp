@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		54093DF99382C0434D46DD4F /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5434F7977A085A3EBEA69A /* Pods_MovieApp.framework */; };
+		DF04A601293F157D0009DCAF /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A600293F157D0009DCAF /* APIConstants.swift */; };
+		DF04A603293F1BED0009DCAF /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A602293F1BED0009DCAF /* DataProvider.swift */; };
+		DF04A605293F248F0009DCAF /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A604293F248F0009DCAF /* NetworkHandler.swift */; };
+		DF04A609293F2F910009DCAF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A608293F2F910009DCAF /* NetworkService.swift */; };
+		DF04A60B293F2FC80009DCAF /* NetworkMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A60A293F2FC80009DCAF /* NetworkMethod.swift */; };
+		DF04A611293F302F0009DCAF /* Parceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A60D293F302F0009DCAF /* Parceable.swift */; };
+		DF04A612293F302F0009DCAF /* ReachabilityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A60F293F302F0009DCAF /* ReachabilityError.swift */; };
+		DF04A613293F302F0009DCAF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A610293F302F0009DCAF /* Reachability.swift */; };
 		DF71A489293C498600B16868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF71A482293C498600B16868 /* LaunchScreen.storyboard */; };
 		DF71A48A293C498600B16868 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF71A483293C498600B16868 /* Main.storyboard */; };
 		DF71A48C293C55A000B16868 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48B293C55A000B16868 /* FeedViewController.swift */; };
@@ -15,6 +23,8 @@
 		DF71A490293C55B200B16868 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48F293C55B200B16868 /* FavoritesViewController.swift */; };
 		DF71A492293C5D4800B16868 /* MovieFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A491293C5D4800B16868 /* MovieFeed.swift */; };
 		DF71A494293C5DD000B16868 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A493293C5DD000B16868 /* MovieDetails.swift */; };
+		DF71A496293C60CE00B16868 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A495293C60CE00B16868 /* MovieCell.swift */; };
+		DF71A498293C60D600B16868 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF71A497293C60D600B16868 /* MovieCell.xib */; };
 		DFD618F8293C432C00122409 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD618F7293C432C00122409 /* AppDelegate.swift */; };
 		DFD618FA293C432C00122409 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD618F9293C432C00122409 /* SceneDelegate.swift */; };
 		DFD61901293C432D00122409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD61900293C432D00122409 /* Assets.xcassets */; };
@@ -23,6 +33,14 @@
 /* Begin PBXFileReference section */
 		2C5434F7977A085A3EBEA69A /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29E139C2A191C78A127DAA3 /* Pods-MovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.release.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.release.xcconfig"; sourceTree = "<group>"; };
+		DF04A600293F157D0009DCAF /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		DF04A602293F1BED0009DCAF /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		DF04A604293F248F0009DCAF /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		DF04A608293F2F910009DCAF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		DF04A60A293F2FC80009DCAF /* NetworkMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMethod.swift; sourceTree = "<group>"; };
+		DF04A60D293F302F0009DCAF /* Parceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parceable.swift; sourceTree = "<group>"; };
+		DF04A60F293F302F0009DCAF /* ReachabilityError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityError.swift; sourceTree = "<group>"; };
+		DF04A610293F302F0009DCAF /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		DF71A482293C498600B16868 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF71A483293C498600B16868 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DF71A48B293C55A000B16868 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +48,8 @@
 		DF71A48F293C55B200B16868 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		DF71A491293C5D4800B16868 /* MovieFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeed.swift; sourceTree = "<group>"; };
 		DF71A493293C5DD000B16868 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
+		DF71A495293C60CE00B16868 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		DF71A497293C60D600B16868 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		DFD618F4293C432C00122409 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD618F7293C432C00122409 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFD618F9293C432C00122409 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +85,23 @@
 				B29E139C2A191C78A127DAA3 /* Pods-MovieApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DF04A60C293F302F0009DCAF /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				DF04A60D293F302F0009DCAF /* Parceable.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		DF04A60E293F302F0009DCAF /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				DF04A60F293F302F0009DCAF /* ReachabilityError.swift */,
+				DF04A610293F302F0009DCAF /* Reachability.swift */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		DF71A47E293C498600B16868 /* Extension */ = {
@@ -105,6 +142,8 @@
 		DF71A484293C498600B16868 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				DF71A495293C60CE00B16868 /* MovieCell.swift */,
+				DF71A497293C60D600B16868 /* MovieCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -129,6 +168,12 @@
 		DF71A487293C498600B16868 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				DF04A600293F157D0009DCAF /* APIConstants.swift */,
+				DF04A604293F248F0009DCAF /* NetworkHandler.swift */,
+				DF04A608293F2F910009DCAF /* NetworkService.swift */,
+				DF04A60A293F2FC80009DCAF /* NetworkMethod.swift */,
+				DF04A60C293F302F0009DCAF /* Parser */,
+				DF04A60E293F302F0009DCAF /* Reachability */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -136,6 +181,7 @@
 		DF71A488293C498600B16868 /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
+				DF04A602293F1BED0009DCAF /* DataProvider.swift */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -237,6 +283,7 @@
 			files = (
 				DF71A48A293C498600B16868 /* Main.storyboard in Resources */,
 				DFD61901293C432D00122409 /* Assets.xcassets in Resources */,
+				DF71A498293C60D600B16868 /* MovieCell.xib in Resources */,
 				DF71A489293C498600B16868 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,11 +338,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFD618F8293C432C00122409 /* AppDelegate.swift in Sources */,
+				DF04A612293F302F0009DCAF /* ReachabilityError.swift in Sources */,
+				DF04A60B293F2FC80009DCAF /* NetworkMethod.swift in Sources */,
+				DF04A605293F248F0009DCAF /* NetworkHandler.swift in Sources */,
 				DF71A494293C5DD000B16868 /* MovieDetails.swift in Sources */,
+				DF04A603293F1BED0009DCAF /* DataProvider.swift in Sources */,
+				DF71A496293C60CE00B16868 /* MovieCell.swift in Sources */,
 				DF71A48C293C55A000B16868 /* FeedViewController.swift in Sources */,
 				DF71A48E293C55A900B16868 /* SearchViewController.swift in Sources */,
+				DF04A601293F157D0009DCAF /* APIConstants.swift in Sources */,
+				DF04A611293F302F0009DCAF /* Parceable.swift in Sources */,
 				DF71A490293C55B200B16868 /* FavoritesViewController.swift in Sources */,
 				DF71A492293C5D4800B16868 /* MovieFeed.swift in Sources */,
+				DF04A609293F2F910009DCAF /* NetworkService.swift in Sources */,
+				DF04A613293F302F0009DCAF /* Reachability.swift in Sources */,
 				DFD618FA293C432C00122409 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

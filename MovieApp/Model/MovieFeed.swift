@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Welcome
+// MARK: - MovieFeed
 struct MovieFeed: Codable {
     let dates: Dates?
     let page: Int?
@@ -52,5 +52,17 @@ struct Result: Codable {
         case title, video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+    }
+}
+
+// MARK: - Parceable protocol
+extension MovieFeed: Parceable {
+    static func parseObject(data: Data) -> APIResult<MovieFeed, ErrorResult> {
+        let decoder = JSONDecoder()
+        if let result = try? decoder.decode(MovieFeed.self, from: data) {
+            return APIResult.success(result)
+        } else {
+            return APIResult.failure(ErrorResult.parser(string: "Unable to parse response"))
+        }
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WNz-ol-crQ">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="cex-QI-aXT" customClass="SearchViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vbp-IO-YTz">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Vc0-Bz-Z0g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -29,7 +29,7 @@
             <objects>
                 <viewController id="Aiy-LY-zJ5" customClass="FavoritesViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uRK-Yv-wWD">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="k0S-38-JnC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -45,12 +45,50 @@
             <objects>
                 <viewController id="Bao-Fd-xul" customClass="FeedViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zbi-Z6-VBV">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A3z-Cz-n0q">
+                                <rect key="frame" x="16" y="60" width="288" height="32"/>
+                                <segments>
+                                    <segment title="Now Playing"/>
+                                    <segment title="Popular"/>
+                                    <segment title="Top Rated"/>
+                                    <segment title="Upcoming"/>
+                                </segments>
+                                <connections>
+                                    <action selector="movieTypesSelected:" destination="Bao-Fd-xul" eventType="valueChanged" id="0TN-uS-s2z"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lMV-Og-Lm6">
+                                <rect key="frame" x="0.0" y="107" width="320" height="412"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jyE-gV-Msc">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="WvR-46-aAl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WvR-46-aAl" firstAttribute="trailing" secondItem="lMV-Og-Lm6" secondAttribute="trailing" id="CYs-2v-I2b"/>
+                            <constraint firstItem="WvR-46-aAl" firstAttribute="trailing" secondItem="A3z-Cz-n0q" secondAttribute="trailing" constant="16" id="KKs-RC-baS"/>
+                            <constraint firstItem="A3z-Cz-n0q" firstAttribute="top" secondItem="WvR-46-aAl" secondAttribute="top" constant="16" id="L2d-Yu-bRj"/>
+                            <constraint firstItem="A3z-Cz-n0q" firstAttribute="leading" secondItem="WvR-46-aAl" secondAttribute="leading" constant="16" id="SjC-Wg-AQl"/>
+                            <constraint firstItem="WvR-46-aAl" firstAttribute="bottom" secondItem="lMV-Og-Lm6" secondAttribute="bottom" id="hxT-n9-5HI"/>
+                            <constraint firstItem="lMV-Og-Lm6" firstAttribute="leading" secondItem="WvR-46-aAl" secondAttribute="leading" id="kPI-vo-V8d"/>
+                            <constraint firstItem="lMV-Og-Lm6" firstAttribute="top" secondItem="A3z-Cz-n0q" secondAttribute="bottom" constant="16" id="oqe-nR-spg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movie" id="8Ns-8k-aO6"/>
+                    <connections>
+                        <outlet property="movieCollectionView" destination="lMV-Og-Lm6" id="7lV-KV-Z9n"/>
+                        <outlet property="moviePreferences" destination="A3z-Cz-n0q" id="Qvy-Wx-PjD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGo-E3-IWh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,7 +121,7 @@
                     <tabBarItem key="tabBarItem" image="film" catalog="system" id="Ucg-WF-hEd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xfu-lY-nUf">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -102,7 +140,7 @@
                     <tabBarItem key="tabBarItem" systemItem="search" id="4ga-vh-SAE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="C5I-jF-b7U">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -122,7 +160,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zuq-p4-gqj">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
