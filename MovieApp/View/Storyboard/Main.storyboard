@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WNz-ol-crQ">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -43,7 +44,7 @@
         <!--Movie-->
         <scene sceneID="SjS-CM-MDe">
             <objects>
-                <viewController id="Bao-Fd-xul" customClass="FeedViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Bao-Fd-xul" customClass="MovieFeedViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zbi-Z6-VBV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,14 +72,22 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Movie Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-l4-T4d">
+                                <rect key="frame" x="59.5" y="267.5" width="201.5" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WvR-46-aAl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WvR-46-aAl" firstAttribute="trailing" secondItem="lMV-Og-Lm6" secondAttribute="trailing" id="CYs-2v-I2b"/>
+                            <constraint firstItem="aXV-l4-T4d" firstAttribute="centerY" secondItem="Zbi-Z6-VBV" secondAttribute="centerY" id="Ec9-Di-pFK"/>
                             <constraint firstItem="WvR-46-aAl" firstAttribute="trailing" secondItem="A3z-Cz-n0q" secondAttribute="trailing" constant="16" id="KKs-RC-baS"/>
                             <constraint firstItem="A3z-Cz-n0q" firstAttribute="top" secondItem="WvR-46-aAl" secondAttribute="top" constant="16" id="L2d-Yu-bRj"/>
                             <constraint firstItem="A3z-Cz-n0q" firstAttribute="leading" secondItem="WvR-46-aAl" secondAttribute="leading" constant="16" id="SjC-Wg-AQl"/>
+                            <constraint firstItem="aXV-l4-T4d" firstAttribute="centerX" secondItem="Zbi-Z6-VBV" secondAttribute="centerX" id="Xjb-dz-TOo"/>
                             <constraint firstItem="WvR-46-aAl" firstAttribute="bottom" secondItem="lMV-Og-Lm6" secondAttribute="bottom" id="hxT-n9-5HI"/>
                             <constraint firstItem="lMV-Og-Lm6" firstAttribute="leading" secondItem="WvR-46-aAl" secondAttribute="leading" id="kPI-vo-V8d"/>
                             <constraint firstItem="lMV-Og-Lm6" firstAttribute="top" secondItem="A3z-Cz-n0q" secondAttribute="bottom" constant="16" id="oqe-nR-spg"/>
@@ -86,6 +95,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movie" id="8Ns-8k-aO6"/>
                     <connections>
+                        <outlet property="messageLabel" destination="aXV-l4-T4d" id="6LA-0T-8wu"/>
                         <outlet property="movieCollectionView" destination="lMV-Og-Lm6" id="7lV-KV-Z9n"/>
                         <outlet property="moviePreferences" destination="A3z-Cz-n0q" id="Qvy-Wx-PjD"/>
                     </connections>

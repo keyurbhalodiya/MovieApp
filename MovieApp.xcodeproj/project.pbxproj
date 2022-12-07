@@ -16,9 +16,13 @@
 		DF04A611293F302F0009DCAF /* Parceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A60D293F302F0009DCAF /* Parceable.swift */; };
 		DF04A612293F302F0009DCAF /* ReachabilityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A60F293F302F0009DCAF /* ReachabilityError.swift */; };
 		DF04A613293F302F0009DCAF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF04A610293F302F0009DCAF /* Reachability.swift */; };
+		DF505D8029404F7800425958 /* MovieFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF505D7F29404F7800425958 /* MovieFeedViewModel.swift */; };
+		DF505D832940551500425958 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF505D822940551500425958 /* ListViewModel.swift */; };
+		DF505D8829405D2B00425958 /* MovieLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF505D8729405D2B00425958 /* MovieLayout.swift */; };
+		DF505D8A2940602A00425958 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF505D892940602A00425958 /* UIViewController.swift */; };
 		DF71A489293C498600B16868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF71A482293C498600B16868 /* LaunchScreen.storyboard */; };
 		DF71A48A293C498600B16868 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF71A483293C498600B16868 /* Main.storyboard */; };
-		DF71A48C293C55A000B16868 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48B293C55A000B16868 /* FeedViewController.swift */; };
+		DF71A48C293C55A000B16868 /* MovieFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48B293C55A000B16868 /* MovieFeedViewController.swift */; };
 		DF71A48E293C55A900B16868 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48D293C55A900B16868 /* SearchViewController.swift */; };
 		DF71A490293C55B200B16868 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48F293C55B200B16868 /* FavoritesViewController.swift */; };
 		DF71A492293C5D4800B16868 /* MovieFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A491293C5D4800B16868 /* MovieFeed.swift */; };
@@ -41,9 +45,13 @@
 		DF04A60D293F302F0009DCAF /* Parceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parceable.swift; sourceTree = "<group>"; };
 		DF04A60F293F302F0009DCAF /* ReachabilityError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityError.swift; sourceTree = "<group>"; };
 		DF04A610293F302F0009DCAF /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		DF505D7F29404F7800425958 /* MovieFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeedViewModel.swift; sourceTree = "<group>"; };
+		DF505D822940551500425958 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		DF505D8729405D2B00425958 /* MovieLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLayout.swift; sourceTree = "<group>"; };
+		DF505D892940602A00425958 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		DF71A482293C498600B16868 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF71A483293C498600B16868 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		DF71A48B293C55A000B16868 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		DF71A48B293C55A000B16868 /* MovieFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeedViewController.swift; sourceTree = "<group>"; };
 		DF71A48D293C55A900B16868 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DF71A48F293C55B200B16868 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		DF71A491293C5D4800B16868 /* MovieFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeed.swift; sourceTree = "<group>"; };
@@ -104,9 +112,26 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		DF505D7C29404D6800425958 /* FlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				DF505D8729405D2B00425958 /* MovieLayout.swift */,
+			);
+			path = FlowLayout;
+			sourceTree = "<group>";
+		};
+		DF505D812940550700425958 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DF505D822940551500425958 /* ListViewModel.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		DF71A47E293C498600B16868 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DF505D892940602A00425958 /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -151,9 +176,10 @@
 		DF71A485293C498600B16868 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DF71A48B293C55A000B16868 /* FeedViewController.swift */,
+				DF71A48B293C55A000B16868 /* MovieFeedViewController.swift */,
 				DF71A48D293C55A900B16868 /* SearchViewController.swift */,
 				DF71A48F293C55B200B16868 /* FavoritesViewController.swift */,
+				DF505D7C29404D6800425958 /* FlowLayout */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -161,6 +187,8 @@
 		DF71A486293C498600B16868 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DF505D812940550700425958 /* Protocol */,
+				DF505D7F29404F7800425958 /* MovieFeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -339,17 +367,21 @@
 			files = (
 				DFD618F8293C432C00122409 /* AppDelegate.swift in Sources */,
 				DF04A612293F302F0009DCAF /* ReachabilityError.swift in Sources */,
+				DF505D8829405D2B00425958 /* MovieLayout.swift in Sources */,
 				DF04A60B293F2FC80009DCAF /* NetworkMethod.swift in Sources */,
 				DF04A605293F248F0009DCAF /* NetworkHandler.swift in Sources */,
 				DF71A494293C5DD000B16868 /* MovieDetails.swift in Sources */,
 				DF04A603293F1BED0009DCAF /* DataProvider.swift in Sources */,
 				DF71A496293C60CE00B16868 /* MovieCell.swift in Sources */,
-				DF71A48C293C55A000B16868 /* FeedViewController.swift in Sources */,
+				DF505D8029404F7800425958 /* MovieFeedViewModel.swift in Sources */,
+				DF71A48C293C55A000B16868 /* MovieFeedViewController.swift in Sources */,
 				DF71A48E293C55A900B16868 /* SearchViewController.swift in Sources */,
 				DF04A601293F157D0009DCAF /* APIConstants.swift in Sources */,
 				DF04A611293F302F0009DCAF /* Parceable.swift in Sources */,
 				DF71A490293C55B200B16868 /* FavoritesViewController.swift in Sources */,
+				DF505D8A2940602A00425958 /* UIViewController.swift in Sources */,
 				DF71A492293C5D4800B16868 /* MovieFeed.swift in Sources */,
+				DF505D832940551500425958 /* ListViewModel.swift in Sources */,
 				DF04A609293F2F910009DCAF /* NetworkService.swift in Sources */,
 				DF04A613293F302F0009DCAF /* Reachability.swift in Sources */,
 				DFD618FA293C432C00122409 /* SceneDelegate.swift in Sources */,
@@ -488,6 +520,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,6 +549,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
