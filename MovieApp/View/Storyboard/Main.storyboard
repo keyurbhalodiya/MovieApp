@@ -16,14 +16,66 @@
                     <view key="view" contentMode="scaleToFill" id="Vbp-IO-YTz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4R0-vi-uat">
+                                <rect key="frame" x="0.0" y="44" width="320" height="64"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dU-FD-xM0">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="cex-QI-aXT" id="AH9-7q-YlE"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="wey-YK-7zj"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vAl-uH-VDg">
+                                <rect key="frame" x="0.0" y="108" width="320" height="411"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sDD-CT-pne">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Movie Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qJq-K5-neM">
+                                <rect key="frame" x="59.5" y="267.5" width="201" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Vc0-Bz-Z0g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qJq-K5-neM" firstAttribute="centerX" secondItem="Vbp-IO-YTz" secondAttribute="centerX" id="2gb-bf-obL"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="vAl-uH-VDg" secondAttribute="bottom" id="Iai-pU-vl0"/>
+                            <constraint firstItem="4R0-vi-uat" firstAttribute="trailing" secondItem="Vc0-Bz-Z0g" secondAttribute="trailing" id="UYz-gQ-iUp"/>
+                            <constraint firstItem="qJq-K5-neM" firstAttribute="centerY" secondItem="Vbp-IO-YTz" secondAttribute="centerY" id="Y8V-C0-zi2"/>
+                            <constraint firstItem="4R0-vi-uat" firstAttribute="top" secondItem="Vc0-Bz-Z0g" secondAttribute="top" id="f1V-LU-iTN"/>
+                            <constraint firstItem="4R0-vi-uat" firstAttribute="leading" secondItem="Vc0-Bz-Z0g" secondAttribute="leading" id="gMW-R3-Hxa"/>
+                            <constraint firstItem="vAl-uH-VDg" firstAttribute="leading" secondItem="Vc0-Bz-Z0g" secondAttribute="leading" id="kOD-dX-44M"/>
+                            <constraint firstItem="vAl-uH-VDg" firstAttribute="top" secondItem="4R0-vi-uat" secondAttribute="bottom" id="rHU-HJ-pNF"/>
+                            <constraint firstItem="vAl-uH-VDg" firstAttribute="trailing" secondItem="Vc0-Bz-Z0g" secondAttribute="trailing" id="xHU-EJ-Dv6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="s0S-iS-tny"/>
+                    <connections>
+                        <outlet property="messageLabel" destination="qJq-K5-neM" id="XJw-GS-Kne"/>
+                        <outlet property="movieCollectionView" destination="vAl-uH-VDg" id="XOI-5w-zAG"/>
+                        <outlet property="searchBar" destination="7dU-FD-xM0" id="k6k-N2-ZIu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbV-cs-nAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="580" y="-536"/>
+            <point key="canvasLocation" x="579.375" y="-536.61971830985919"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="tuj-fN-NHY">
@@ -72,8 +124,8 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Movie Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-l4-T4d">
-                                <rect key="frame" x="59.5" y="267.5" width="201.5" height="33"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Movie Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-l4-T4d">
+                                <rect key="frame" x="59.5" y="267.5" width="201" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -124,11 +176,11 @@
             </objects>
             <point key="canvasLocation" x="-1241" y="-536"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Movie-->
         <scene sceneID="veb-k8-d6D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PLl-BU-8MH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="film" catalog="system" id="Ucg-WF-hEd"/>
+                    <tabBarItem key="tabBarItem" title="Movie" image="film" catalog="system" id="Ucg-WF-hEd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xfu-lY-nUf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

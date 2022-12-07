@@ -12,6 +12,7 @@ enum RequestType {
     case popular
     case topRated
     case upcoming
+    case search
 }
 
 class DataProvider: NetworkHandler {
@@ -19,13 +20,18 @@ class DataProvider: NetworkHandler {
     var task: URLSessionTask?
     
     /// Generate task to fetch movie with page index param
+    /// - Parameter page: index of page
+    /// - Parameter searchText: default value is empty. Only pass value when search API call
     /// - Parameter completion: movieFeed or error.
-    func fetchMovieFeed(page: Int, requestType: RequestType, completion: @escaping ((APIResult<MovieFeed, ErrorResult>) -> Void)) {
+    func fetchMovieFeed(page: Int, searchText:String = "", requestType: RequestType, completion: @escaping ((APIResult<MovieFeed, ErrorResult>) -> Void)) {
         self.cancelFetchService()
-        let parameters: [String: String] = [
+        var parameters: [String: String] = [
             "page": "\(page)",
-            "api_key": APIConstants.apiKey
+            "api_key": APIConstants.apiKey,
         ]
+        if requestType == .search {
+            parameters["query"] = searchText
+        }
         
         task = NetworkService().loadData(urlString: urlString(requestType: requestType), parameters: parameters, completion: self.networkResult(completion: completion))
     }
@@ -41,6 +47,8 @@ class DataProvider: NetworkHandler {
             return APIConstants.topRated
         case .upcoming:
             return APIConstants.upcoming
+        case .search:
+            return APIConstants.search
         }
     }
     

@@ -15,7 +15,7 @@ extension UICollectionViewLayout {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(UIScreen.main.bounds.size.width * 100 / 138))
+                                               heightDimension:.absolute(300))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2 )
         let spacing = CGFloat(10)
         group.interItemSpacing = .fixed(spacing)

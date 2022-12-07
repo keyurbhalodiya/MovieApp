@@ -1,14 +1,13 @@
 //
-//  MovieFeedViewModel.swift
+//  SearchViewModel.swift
 //  MovieApp
 //
 //  Created by Bhalodiya, Keyur | Kb | ECMPD on 2022/12/07.
 //
 
-import Foundation
 import UIKit
 
-final class MovieFeedViewModel {
+final class SearchViewModel {
     
     enum Section {
         case movieFeed
@@ -18,7 +17,7 @@ final class MovieFeedViewModel {
         case movieFeed(MovieCellModel)
     }
     
-    struct MovieFeedSectionModel: SectionModel{
+    struct SearchViewSectionModel: SectionModel{
         var type: Section
         var rows: [Row]
     }
@@ -26,20 +25,22 @@ final class MovieFeedViewModel {
     private let dataProvider: DataProvider
     /// page index used in api request param. set to `1` when user change movie type tab
     private var pageIndex: Int = 1
-    private var movieType: RequestType = .nowPlaying
-    private(set) var sectionModels = [MovieFeedSectionModel]()
+    /// recent search keyword. get used to reset `pageIndex`
+    private var recentSeachText: String = ""
+    private(set) var sectionModels = [SearchViewSectionModel]()
 
-    var dataSource: UICollectionViewDiffableDataSource<Section, MovieFeedViewModel.Row>! = nil
+    var dataSource: UICollectionViewDiffableDataSource<Section, SearchViewSectionModel.Row>! = nil
 
     init(dataProvider: DataProvider) {
         self.dataProvider = dataProvider
     }
     
     /// API call to fetch movie
+    /// - Parameter searchText: search keyword
     /// - Parameter completion: will be success or fail
-    func loadMovieFeed(requestType: RequestType, completion: @escaping((Bool) -> Void)) {
-        resetIndexAndSectionModelIfNeeded(requestType: requestType)
-        dataProvider.fetchMovieFeed(page: pageIndex, requestType: requestType) { [weak self] result in
+    func searchMovieFeed(searchText: String, completion: @escaping((Bool) -> Void)) {
+        resetIndexAndSectionModelIfNeeded(searchText: searchText)
+        dataProvider.fetchMovieFeed(page: pageIndex, searchText: searchText, requestType: .search) { [weak self] result in
             var isSuccess: Bool = false
             switch result {
             case .success(let movie):
@@ -54,11 +55,12 @@ final class MovieFeedViewModel {
     
     /// Reset pageIndex and sectionModels when requestType changed compare to previous one
     /// - parameters requestType: type of request
-    private func resetIndexAndSectionModelIfNeeded(requestType: RequestType) {
-        guard requestType != movieType else { return }
-        sectionModels.removeAll()
-        pageIndex = 1
-        movieType = requestType
+    private func resetIndexAndSectionModelIfNeeded(searchText: String) {
+        if recentSeachText != searchText || searchText.isEmpty {
+            pageIndex = 1
+            sectionModels.removeAll()
+        }
+        recentSeachText = searchText
     }
     
     private func generateSectionModels(movie: [Result]?) {
@@ -68,7 +70,7 @@ final class MovieFeedViewModel {
         updateDataSource()
     }
     
-    private func movieFeedSectionModel(movie: [Result]?) -> MovieFeedSectionModel? {
+    private func movieFeedSectionModel(movie: [Result]?) -> SearchViewSectionModel? {
         let sectionModel = sectionModel(for: .movieFeed)
         guard let rows = moviesRows(movie: movie) else {
             return sectionModel
@@ -78,7 +80,7 @@ final class MovieFeedViewModel {
             model.rows.append(contentsOf: rows)
             return model
         } else {
-            return MovieFeedSectionModel(type: .movieFeed, rows: rows)
+            return SearchViewSectionModel(type: .movieFeed, rows: rows)
         }
     }
     
@@ -90,7 +92,7 @@ final class MovieFeedViewModel {
     }
     
     private func updateDataSource() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, MovieFeedViewModel.Row>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, SearchViewSectionModel.Row>()
         snapshot.appendSections([.movieFeed])
         snapshot.appendItems(sectionModel(for: .movieFeed)?.rows ?? [])
         dataSource.apply(snapshot, animatingDifferences: true)
@@ -98,9 +100,9 @@ final class MovieFeedViewModel {
 }
 
 // MARK: - CollectionViewModel
-extension MovieFeedViewModel {
+extension SearchViewModel {
     
-    func sectionModel(for type: Section) -> MovieFeedSectionModel? {
+    func sectionModel(for type: Section) -> SearchViewSectionModel? {
         return sectionModels.first(where: { $0.type == type })
     }
     

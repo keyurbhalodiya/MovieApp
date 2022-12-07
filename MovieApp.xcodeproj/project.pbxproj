@@ -20,6 +20,7 @@
 		DF505D832940551500425958 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF505D822940551500425958 /* ListViewModel.swift */; };
 		DF505D8829405D2B00425958 /* MovieLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF505D8729405D2B00425958 /* MovieLayout.swift */; };
 		DF505D8A2940602A00425958 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF505D892940602A00425958 /* UIViewController.swift */; };
+		DF505D8C294095A700425958 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF505D8B294095A700425958 /* SearchViewModel.swift */; };
 		DF71A489293C498600B16868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF71A482293C498600B16868 /* LaunchScreen.storyboard */; };
 		DF71A48A293C498600B16868 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF71A483293C498600B16868 /* Main.storyboard */; };
 		DF71A48C293C55A000B16868 /* MovieFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71A48B293C55A000B16868 /* MovieFeedViewController.swift */; };
@@ -49,6 +50,7 @@
 		DF505D822940551500425958 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		DF505D8729405D2B00425958 /* MovieLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLayout.swift; sourceTree = "<group>"; };
 		DF505D892940602A00425958 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		DF505D8B294095A700425958 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		DF71A482293C498600B16868 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF71A483293C498600B16868 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DF71A48B293C55A000B16868 /* MovieFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeedViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				DF505D812940550700425958 /* Protocol */,
 				DF505D7F29404F7800425958 /* MovieFeedViewModel.swift */,
+				DF505D8B294095A700425958 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				DF04A611293F302F0009DCAF /* Parceable.swift in Sources */,
 				DF71A490293C55B200B16868 /* FavoritesViewController.swift in Sources */,
 				DF505D8A2940602A00425958 /* UIViewController.swift in Sources */,
+				DF505D8C294095A700425958 /* SearchViewModel.swift in Sources */,
 				DF71A492293C5D4800B16868 /* MovieFeed.swift in Sources */,
 				DF505D832940551500425958 /* ListViewModel.swift in Sources */,
 				DF04A609293F2F910009DCAF /* NetworkService.swift in Sources */,

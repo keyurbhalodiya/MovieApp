@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MovieFeedViewController: UIViewController {
+final class MovieFeedViewController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet private weak var moviePreferences: UISegmentedControl!
     @IBOutlet private weak var movieCollectionView: UICollectionView!
@@ -50,10 +50,6 @@ final class MovieFeedViewController: UIViewController {
         viewModel.dataSource = UICollectionViewDiffableDataSource<MovieFeedViewModel.Section, MovieFeedViewModel.Row>(collectionView: movieCollectionView) {
         (collectionView: UICollectionView, indexPath: IndexPath, row: MovieFeedViewModel.Row?) -> UICollectionViewCell? in
             
-//            guard let row = self.viewModel.row(at: indexPath) else {
-//                return UICollectionViewCell()
-//            }
-            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.identifier, for: indexPath) as? MovieCell else { fatalError("Cannot create new cell")}
 
             switch row {
@@ -83,7 +79,7 @@ final class MovieFeedViewController: UIViewController {
 }
 
 //MARK: - UICollectionViewDelegate Delegate
-extension MovieFeedViewController: UICollectionViewDelegate {
+extension MovieFeedViewController {
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     }
