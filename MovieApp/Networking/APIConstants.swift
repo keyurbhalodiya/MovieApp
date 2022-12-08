@@ -15,7 +15,7 @@ enum APIConstants {
     static let topRated = baseUrl + "movie/top_rated"
     static let upcoming = baseUrl + "movie/upcoming"
     static let genreList = baseUrl + "genre/movie/list"
-    static let movieDetails = baseUrl + "movie"
+    static let movieDetails = baseUrl + "movie/"
     static let search = baseUrl + "search/movie"
     static let imageUrl = "https://image.tmdb.org/t/p/original"
     static let error = "Error"

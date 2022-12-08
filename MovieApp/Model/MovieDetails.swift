@@ -26,7 +26,8 @@ struct MovieDetails: Codable {
     let spokenLanguages: [SpokenLanguage]?
     let status, tagline, title: String?
     let video: Bool?
-    let voteAverage, voteCount: Int?
+    let voteAverage: Double?
+    let voteCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -70,7 +71,8 @@ struct Genre: Codable {
 // MARK: - ProductionCompany
 struct ProductionCompany: Codable {
     let id: Int?
-    let logoPath, name, originCountry: String?
+    let logoPath: String?
+    let name, originCountry: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -98,5 +100,18 @@ struct SpokenLanguage: Codable {
         case englishName = "english_name"
         case iso639_1 = "iso_639_1"
         case name
+    }
+}
+
+
+// MARK: - Parceable protocol
+extension MovieDetails: Parceable {
+    static func parseObject(data: Data) -> APIResult<MovieDetails, ErrorResult> {
+        let decoder = JSONDecoder()
+        if let result = try? decoder.decode(MovieDetails.self, from: data) {
+            return APIResult.success(result)
+        } else {
+            return APIResult.failure(ErrorResult.parser(string: "Unable to parse response"))
+        }
     }
 }

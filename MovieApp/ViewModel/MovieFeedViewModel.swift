@@ -23,7 +23,7 @@ final class MovieFeedViewModel {
         var rows: [Row]
     }
     
-    private let dataProvider: DataProvider
+    let dataProvider: DataProvider
     /// page index used in api request param. set to `1` when user change movie type tab
     private var pageIndex: Int = 1
     private var movieType: RequestType = .nowPlaying
@@ -93,7 +93,7 @@ final class MovieFeedViewModel {
         guard let movie = movie, !movie.isEmpty else {
             return nil
         }
-        return movie.map({ Row.movieFeed(MovieCellModel(uuid: $0.uuid, posterPath: $0.posterPath, title: $0.title, releaseDate: $0.releaseDate, voteAverage: $0.voteAverage, voteCount: $0.voteCount)) })
+        return movie.map({ Row.movieFeed(MovieCellModel(uuid: $0.uuid, movieId: $0.id, posterPath: $0.posterPath, title: $0.title, releaseDate: $0.releaseDate, voteAverage: $0.voteAverage, voteCount: $0.voteCount)) })
     }
     
     private func updateDataSource() {

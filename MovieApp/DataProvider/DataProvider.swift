@@ -52,6 +52,18 @@ class DataProvider: NetworkHandler {
         }
     }
     
+    /// Generate task to fetch movie details with id
+    /// - Parameter movieId: movie id
+    /// - Parameter completion: movieDetails or error.
+    func fetchMovieDetails(movieId: String, completion: @escaping ((APIResult<MovieDetails, ErrorResult>) -> Void)) {
+        self.cancelFetchService()
+        let parameters: [String: String] = [
+            "api_key": APIConstants.apiKey,
+        ]
+        
+        task = NetworkService().loadData(urlString: APIConstants.movieDetails + movieId, parameters: parameters, completion: self.networkResult(completion: completion))
+    }
+    
     /// Cancel session task.
     private func cancelFetchService() {
         if let task = task {

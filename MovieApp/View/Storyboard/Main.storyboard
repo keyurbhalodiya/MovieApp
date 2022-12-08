@@ -234,6 +234,38 @@
             </objects>
             <point key="canvasLocation" x="-298" y="186"/>
         </scene>
+        <!--Movie Details View Controller-->
+        <scene sceneID="DXh-tD-03c">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailsViewController" id="AsI-kh-Mvn" customClass="MovieDetailsViewController" customModule="MovieApp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gTU-vl-9ur">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WMx-hU-t3f">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kTC-EZ-tV7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WMx-hU-t3f" firstAttribute="leading" secondItem="kTC-EZ-tV7" secondAttribute="leading" id="2YE-TS-6gD"/>
+                            <constraint firstItem="kTC-EZ-tV7" firstAttribute="trailing" secondItem="WMx-hU-t3f" secondAttribute="trailing" id="6Gv-vn-lmW"/>
+                            <constraint firstItem="WMx-hU-t3f" firstAttribute="top" secondItem="kTC-EZ-tV7" secondAttribute="top" id="O9Y-V2-rvV"/>
+                            <constraint firstItem="kTC-EZ-tV7" firstAttribute="bottom" secondItem="WMx-hU-t3f" secondAttribute="bottom" id="uRd-GQ-AsO"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="WMx-hU-t3f" id="EY3-6g-7hi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="702-wE-ymJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1641" y="-537"/>
+        </scene>
     </scenes>
     <resources>
         <image name="film" catalog="system" width="128" height="93"/>

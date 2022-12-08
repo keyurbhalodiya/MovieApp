@@ -10,6 +10,7 @@ import SDWebImage
 
 struct MovieCellModel: Hashable {
     let uuid: UUID
+    let movieId: Int?
     let posterPath: String?
     let title: String?
     let releaseDate: String?
@@ -41,7 +42,7 @@ final class MovieCell: UICollectionViewCell {
     
     func style(with cellModel: MovieCellModel) {
         moviewTitle.text = cellModel.title
-        moviewDetails.attributedText = MovieCell.buildAttributeString(cellModel: cellModel)
+        moviewDetails.attributedText = buildAttributeString(cellModel: cellModel)
         loadImage(path: cellModel.posterPath)
     }
     
@@ -51,27 +52,19 @@ final class MovieCell: UICollectionViewCell {
         movieImageView.sd_setImage(with: URL(string: APIConstants.imageUrl + "/\(path)"), placeholderImage: UIImage(named: "moviePlaceHolder"))
     }
     
-}
-
-extension MovieCell {
-    private static func buildAttributeString(cellModel: MovieCellModel) -> NSMutableAttributedString {
+    private func buildAttributeString(cellModel: MovieCellModel) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: "")
         if let voteCount = cellModel.voteCount {
-            attributedString.append(NSAttributedString(string: "Vote Count: ", attributes: titleAttributes))
-            attributedString.append(NSAttributedString(string: "\(voteCount)", attributes: valueAttributes))
+            attributedString.append(NSAttributedString.getAttributedString(title: "Vote Count: ", value: "\(voteCount)"))
         }
         
         if let voteAverage = cellModel.voteAverage {
-            attributedString.append(NSAttributedString(string: "\nVote Average: ", attributes: titleAttributes))
-            attributedString.append(NSAttributedString(string: "\(voteAverage)", attributes: valueAttributes))
+            attributedString.append(NSAttributedString.getAttributedString(title: "\nVote Average: ", value: "\(voteAverage)"))
         }
         
         if let releaseDate = cellModel.releaseDate {
-            attributedString.append(NSAttributedString(string: "\nRelease Date: ", attributes: titleAttributes))
-            attributedString.append(NSAttributedString(string: releaseDate, attributes: valueAttributes))
-
+            attributedString.append(NSAttributedString.getAttributedString(title: "\nRelease Date: ", value: "\n\(releaseDate)"))
         }
         return attributedString
     }
 }
-

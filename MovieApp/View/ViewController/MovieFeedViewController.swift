@@ -95,16 +95,15 @@ final class MovieFeedViewController: UIViewController, UICollectionViewDelegate 
 
 //MARK: - UICollectionViewDelegate Delegate
 extension MovieFeedViewController {
-
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    }
-    
     //Navigation
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
-    
-    // Prepare Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if case .movieFeed(let cellModel) = viewModel.row(at: indexPath), let movieId = cellModel.movieId {
+            let viewController = self.storyboard!.instantiateViewController(withIdentifier: MovieDetailsViewController.identifier) as! MovieDetailsViewController
+            let viewModel = MovieDetailsViewModel(dataProvider: viewModel.dataProvider, movieId: "\(movieId)")
+            viewController.viewModel = viewModel
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 
