@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 
 struct MovieCellModel: Hashable {
+    let uuid: UUID
     let posterPath: String?
     let title: String?
     let releaseDate: String?

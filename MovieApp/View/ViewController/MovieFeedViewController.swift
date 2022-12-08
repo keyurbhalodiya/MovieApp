@@ -15,6 +15,12 @@ final class MovieFeedViewController: UIViewController, UICollectionViewDelegate 
     
     private let viewModel = MovieFeedViewModel(dataProvider: DataProvider())
     private var isLoading: Bool = false
+    private var segmentIndex = 0 {
+        didSet {
+            scrollToTopIfNeeded()
+            loadMovieData()
+        }
+    }
     
     override func viewDidLoad() {
         setupCollectionView()
@@ -28,10 +34,30 @@ final class MovieFeedViewController: UIViewController, UICollectionViewDelegate 
         movieCollectionView.collectionViewLayout = .createLayout()
     }
     
-    private func loadMovieData(requestType: RequestType = .nowPlaying) {
+    private func loadMovieData() {
+        guard !isLoading else { return }
+        var requestType: RequestType = .nowPlaying
+        switch segmentIndex {
+        case 0:
+            requestType = .nowPlaying
+        case 1:
+            requestType = .popular
+        case 2:
+            requestType = .topRated
+        case 3:
+            requestType = .upcoming
+        default:
+            break
+        }
+        isLoading = true
         viewModel.loadMovieFeed(requestType: requestType) { [weak self] isSuccess in
             self?.updateUIElements(isSuccess: isSuccess)
         }
+    }
+    
+    private func scrollToTopIfNeeded() {
+        guard !viewModel.sectionModels.isEmpty else { return }
+        self.movieCollectionView?.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     private func updateUIElements(isSuccess: Bool = true) {
@@ -63,18 +89,7 @@ final class MovieFeedViewController: UIViewController, UICollectionViewDelegate 
     }
     
     @IBAction func movieTypesSelected(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            loadMovieData(requestType: .nowPlaying)
-        case 1:
-            loadMovieData(requestType: .popular)
-        case 2:
-            loadMovieData(requestType: .topRated)
-        case 3:
-            loadMovieData(requestType: .upcoming)
-        default:
-            break
-        }
+        segmentIndex = sender.selectedSegmentIndex
    }
 }
 
@@ -90,5 +105,14 @@ extension MovieFeedViewController {
     
     // Prepare Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension MovieFeedViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height) && !viewModel.shouldFinishLoading) {
+            loadMovieData()
+        }
     }
 }

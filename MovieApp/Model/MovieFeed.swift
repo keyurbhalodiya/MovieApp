@@ -27,7 +27,8 @@ struct Dates: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct Result: Codable, Identifiable {
+    let uuid = UUID()
     let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?
@@ -52,6 +53,16 @@ struct Result: Codable {
         case title, video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+    }
+}
+
+extension Result: Hashable {
+    static func ==(lhs: Result, rhs: Result) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
     }
 }
 

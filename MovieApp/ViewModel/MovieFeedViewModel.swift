@@ -18,7 +18,7 @@ final class MovieFeedViewModel {
         case movieFeed(MovieCellModel)
     }
     
-    struct MovieFeedSectionModel: SectionModel{
+    struct MovieFeedSectionModel: SectionModel {
         var type: Section
         var rows: [Row]
     }
@@ -27,9 +27,12 @@ final class MovieFeedViewModel {
     /// page index used in api request param. set to `1` when user change movie type tab
     private var pageIndex: Int = 1
     private var movieType: RequestType = .nowPlaying
+    /// determine to used api needs to call when user scroll the list.
+    /// set `true` once app receive all pages data loaded
+    private(set) var shouldFinishLoading : Bool = false
     private(set) var sectionModels = [MovieFeedSectionModel]()
-
-    var dataSource: UICollectionViewDiffableDataSource<Section, MovieFeedViewModel.Row>! = nil
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, MovieFeedSectionModel.Row>! = nil
 
     init(dataProvider: DataProvider) {
         self.dataProvider = dataProvider
@@ -40,10 +43,13 @@ final class MovieFeedViewModel {
     func loadMovieFeed(requestType: RequestType, completion: @escaping((Bool) -> Void)) {
         resetIndexAndSectionModelIfNeeded(requestType: requestType)
         dataProvider.fetchMovieFeed(page: pageIndex, requestType: requestType) { [weak self] result in
+            guard let weakSelf = self else { return }
             var isSuccess: Bool = false
             switch result {
             case .success(let movie):
-                self?.generateSectionModels(movie: movie.results)
+                weakSelf.generateSectionModels(movie: movie.results)
+                weakSelf.pageIndex += 1
+                weakSelf.shouldFinishLoading = weakSelf.pageIndex > movie.totalPages ?? 0
                 isSuccess = true
             case .failure(_):
                 break
@@ -58,6 +64,7 @@ final class MovieFeedViewModel {
         guard requestType != movieType else { return }
         sectionModels.removeAll()
         pageIndex = 1
+        shouldFinishLoading = false
         movieType = requestType
     }
     
@@ -86,11 +93,11 @@ final class MovieFeedViewModel {
         guard let movie = movie, !movie.isEmpty else {
             return nil
         }
-        return movie.map({ Row.movieFeed(MovieCellModel(posterPath: $0.posterPath, title: $0.title, releaseDate: $0.releaseDate, voteAverage: $0.voteAverage, voteCount: $0.voteCount)) })
+        return movie.map({ Row.movieFeed(MovieCellModel(uuid: $0.uuid, posterPath: $0.posterPath, title: $0.title, releaseDate: $0.releaseDate, voteAverage: $0.voteAverage, voteCount: $0.voteCount)) })
     }
     
     private func updateDataSource() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, MovieFeedViewModel.Row>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MovieFeedSectionModel.Row>()
         snapshot.appendSections([.movieFeed])
         snapshot.appendItems(sectionModel(for: .movieFeed)?.rows ?? [])
         dataSource.apply(snapshot, animatingDifferences: true)

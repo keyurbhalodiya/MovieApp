@@ -27,6 +27,9 @@ final class SearchViewModel {
     private var pageIndex: Int = 1
     /// recent search keyword. get used to reset `pageIndex`
     private var recentSeachText: String = ""
+    /// determine to used api needs to call when user scroll the list.
+    /// set `true` once app receive all pages data loaded
+    private(set) var shouldFinishLoading : Bool = false
     private(set) var sectionModels = [SearchViewSectionModel]()
 
     var dataSource: UICollectionViewDiffableDataSource<Section, SearchViewSectionModel.Row>! = nil
@@ -41,10 +44,13 @@ final class SearchViewModel {
     func searchMovieFeed(searchText: String, completion: @escaping((Bool) -> Void)) {
         resetIndexAndSectionModelIfNeeded(searchText: searchText)
         dataProvider.fetchMovieFeed(page: pageIndex, searchText: searchText, requestType: .search) { [weak self] result in
+            guard let weakSelf = self else { return }
             var isSuccess: Bool = false
             switch result {
             case .success(let movie):
-                self?.generateSectionModels(movie: movie.results)
+                weakSelf.generateSectionModels(movie: movie.results)
+                weakSelf.pageIndex += 1
+                weakSelf.shouldFinishLoading = weakSelf.pageIndex > movie.totalPages ?? 0
                 isSuccess = true
             case .failure(_):
                 break
@@ -58,19 +64,20 @@ final class SearchViewModel {
     private func resetIndexAndSectionModelIfNeeded(searchText: String) {
         if recentSeachText != searchText || searchText.isEmpty {
             pageIndex = 1
+            shouldFinishLoading = false
             sectionModels.removeAll()
         }
         recentSeachText = searchText
     }
     
     private func generateSectionModels(movie: [Result]?) {
-        guard let movieFeedSectionModel = movieFeedSectionModel(movie: movie) else { return }
+        guard let searchViewSectionModel = searchViewSectionModel(movie: movie) else { return }
         sectionModels.removeAll()
-        sectionModels.append(movieFeedSectionModel)
+        sectionModels.append(searchViewSectionModel)
         updateDataSource()
     }
     
-    private func movieFeedSectionModel(movie: [Result]?) -> SearchViewSectionModel? {
+    private func searchViewSectionModel(movie: [Result]?) -> SearchViewSectionModel? {
         let sectionModel = sectionModel(for: .movieFeed)
         guard let rows = moviesRows(movie: movie) else {
             return sectionModel
@@ -88,7 +95,7 @@ final class SearchViewModel {
         guard let movie = movie, !movie.isEmpty else {
             return nil
         }
-        return movie.map({ Row.movieFeed(MovieCellModel(posterPath: $0.posterPath, title: $0.title, releaseDate: $0.releaseDate, voteAverage: $0.voteAverage, voteCount: $0.voteCount)) })
+        return movie.map({ Row.movieFeed(MovieCellModel(uuid: $0.uuid, posterPath: $0.posterPath, title: $0.title, releaseDate: $0.releaseDate, voteAverage: $0.voteAverage, voteCount: $0.voteCount)) })
     }
     
     private func updateDataSource() {

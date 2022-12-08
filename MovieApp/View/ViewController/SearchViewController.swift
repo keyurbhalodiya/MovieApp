@@ -46,9 +46,15 @@ final class SearchViewController: UIViewController, UICollectionViewDelegate {
             .debounce(for: .milliseconds(Constant.searchDelay), scheduler: RunLoop.main)
             .removeDuplicates()
             .sink { [weak self] (searchText) in
+                self?.scrollToTopIfNeeded()
                 self?.searchMovie(searchText: searchText)
             }
             .store(in: &subscriptions)
+    }
+    
+    private func scrollToTopIfNeeded() {
+        guard !viewModel.sectionModels.isEmpty else { return }
+        self.movieCollectionView?.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     private func searchMovie(searchText: String) {
@@ -88,10 +94,10 @@ final class SearchViewController: UIViewController, UICollectionViewDelegate {
     }
 }
 
-// MARK: - UISearchBarDelegate
+// MARK: - UIScrollViewDelegate
 extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height)) {
+        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height) && !viewModel.shouldFinishLoading) {
             searchMovie(searchText: searchBar?.text ?? "")
         }
     }
