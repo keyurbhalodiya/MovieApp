@@ -34,6 +34,7 @@ Each row displays the movie poster, title, release date, vote average, and vote 
 [themoviedb](https://api.themoviedb.org)
 
 ##
-![GitRepoSearch copy](https://user-images.githubusercontent.com/7112264/197776530-12f0f5c7-6795-4f61-9bef-fbd9cc22d8ea.png)
+
+![MovieApp](https://user-images.githubusercontent.com/7112264/206909690-b08dab5b-3180-4a9a-a1a8-fcf56df375c4.png)
 
 
