@@ -5,7 +5,7 @@ There are 4 different category Now Playing, Popular, Top Rated, and Upcoming.
 Also, you can search movie with keyword. 
 
 As per the API response structure, it's returning 20 records for each call. Once you start scrolling and reach the last row, it's called API again to get more records. 
-It will stop the API call once the app gets all repositories for a specific search keyword.
+It will stop the API call once the app gets all movies for a specific category or search keyword.
 
 Each row displays the movie poster, title, release date, vote average, and vote count. Once you click the movie, it will open movie details screen.
 
